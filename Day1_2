@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+int main() {
+
+    fstream MyFile("Day1.txt");
+
+    string text;
+
+    vector<int> elf;
+
+    int temp = 0;
+    int cal = 0;
+    int third = 0;
+    int second = 0;
+    int first = 0;
+
+    while (getline (MyFile, text)){
+
+        if(text == ""){
+            elf.push_back(cal);
+            cal = 0;
+        }
+        else{
+            temp = stoi(text);
+            cal = cal + temp;
+        }
+    }
+
+    sort(elf.begin(), elf.end(), greater<int>());
+
+    cout << (elf[0] + elf[1] + elf[2]) << "\n";
+
+    return 0;
+}
